@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
@@ -8,18 +8,18 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-/*  hero: Hero = {
+  hero: Hero = {
     id:0,
     name: ''
   };
-*/
+
   heroes : Hero[];
   selectedHero: Hero;
 
     constructor(private heroService: HeroService) { }
 
 
-onSelect(hero: Hero): void {
+/*onSelect(hero: Hero): void {
   this.selectedHero = hero;
 }
 
@@ -32,4 +32,19 @@ onSelect(hero: Hero): void {
     this.getHeroes();
   }
 
+}
+*/
+export class HeroesComponent implements OnInit {
+  heroes: Hero[];
+
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.getHeroes();
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
+  }
 }
